@@ -1,34 +1,28 @@
 import React, { Component } from 'react';
 import './contacts.css'
-import contactJson from '../contact-json/contacts.json';
 
-class DisplayContactList extends Component {
-    state = { 
-        contact: contactJson
-     };
+class DisplayContactList extends Component{
 
-     handleDelete = () => {
-        console.log("Deleted Counter id=" + this);
-        // const afterDelete = this.state.contact.filter(c => c.key !== deleteList);
-        // this.setState({ afterDelete });
+    state = {
+        val: this.props.value.value
       };
-
-    render() { 
+    
+    render() {
         return ( 
             <div className = "hero-contact-list-class">
-               {this.state.contact.map(contactItem => 
-               <div className = "contact-list-class" key={contactItem.id}>
-                <span className = "id-sec">{contactItem.id}</span>
-                <img className = "avatar-image" src = {contactItem.avatar_url} alt = "Contact_image"/>
-                <span>{contactItem.first_name}</span>
-                <span>{contactItem.last_name}</span>
-                <span>{contactItem.email}</span>
-                <span>{contactItem.phone}</span>
-                <span onClick={this.handleDelete} key={contactItem.id} className = "delete-list-item" >X</span>
-                </div>)}
+               <div className = "contact-list-class">
+                <span className = "id-sec">{this.props.value.id}</span>
+                <img className = "avatar-image" src = {this.props.value.avatar_url} alt = "Contact_image"/>
+                <span>{this.props.value.first_name}</span>
+                <span>{this.props.value.last_name}</span>
+                <span>{this.props.value.email}</span>
+                <span>{this.props.value.phone}</span>
+                <button onClick={() => this.props.onDelete(this.props.value.id)} key={this.props.value.id} className = "delete-list-item" >X</button>
+                </div>
             </div>
-         );
+        );
     }
 }
+
  
 export default DisplayContactList;
