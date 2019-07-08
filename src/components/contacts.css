@@ -36,3 +36,44 @@
     background-color: lightseagreen;
     cursor: pointer;
 }
+
+/* .real-info{
+    /* color: green; */
+    /* background-color: antiquewhite; */
+/* } */ 
+
+.forms-input{
+    width: 30%;
+}
+
+.enter-details{
+    width: 30%;
+    /* font-size: 90%; */
+    background-color: cadetblue;
+    color: whitesmoke;
+}
+
+.add-new-contact{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.button_cont{
+    margin-top: 2%;
+    background-color: cadetblue;
+}
+
+.submit-btn{
+    background-color: cadetblue;
+    margin-top: 2%;
+}
+
+.input{
+    margin-top: 2%;
+    width: 50%;
+    background-color: lightgray;
+    color:black;
+}
