@@ -8,7 +8,6 @@ class Contacts extends Component {
 
     state = {
         contactList: contactJson,
-        filtered: []
     };
 
     handleDelete = v => {
@@ -21,7 +20,7 @@ class Contacts extends Component {
         console.log(v1);
         this.setState( prevState => ({
             contactList: [
-                ...prevState.contactList, v1 
+              ...prevState.contactList, v1
             ]
         }))
       }
@@ -39,9 +38,7 @@ class Contacts extends Component {
         const phone_no = item.phone;
 
         const filter = e.target.value.toLowerCase();
-
-        // console.log(filter);
-
+        
         return fName_lc.includes(filter) || 
                lName_lc.includes(filter) || 
                email_lc.includes(filter) || 
@@ -56,8 +53,23 @@ class Contacts extends Component {
     });
   }
 
+  onEdit = e => {
+    console.log(e);
+    let contacts = this.state.contactList.slice();
+    contacts = contacts.map(value => {
+       console.log(e.id)
+      if(value.id === e.id){
+        value = {...e};
+      }
+      return value;
+      
+    });
+    
+    this.setState({  contactList : contacts })
+    
+  }
+
     render() { 
-        console.log("props"+ this.props);
         return ( 
             <div>
                 <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
@@ -69,7 +81,9 @@ class Contacts extends Component {
                         <div key ={value.id} className = "main-contact-list-head">
                             <DisplayContactList 
                             key = {value.id}
+                            uniquekey = {value.id}
                             onDelete={this.handleDelete}
+                            onEdit = {this.onEdit}
                             value = {value}
                             />
                         </div>
@@ -79,5 +93,5 @@ class Contacts extends Component {
          );
     }
 }
- 
+
 export default Contacts;

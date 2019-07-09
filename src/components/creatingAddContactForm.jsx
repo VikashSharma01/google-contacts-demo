@@ -29,7 +29,6 @@ const AddNewContacts = ({onInputChange, onFormSubmit}) => (
         <button type="submit" onClick={onFormSubmit} className="submit-btn"> Submit </button>
 
     </form>
-
 )
 
 export default AddNewContacts;

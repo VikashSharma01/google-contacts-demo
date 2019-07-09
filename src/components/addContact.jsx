@@ -57,7 +57,10 @@ export default class AddContact extends Component {
     renderForm() {
         return(
             <div>
-                <AddNewContacts onFormSubmit={this.handleSubmit} onInputChange={this.handleInputChange} />
+                <AddNewContacts 
+                onFormSubmit={this.handleSubmit} 
+                onInputChange={this.handleInputChange} 
+                />
             </div>
         )
     }
