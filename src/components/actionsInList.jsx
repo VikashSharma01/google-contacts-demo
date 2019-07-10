@@ -25,7 +25,6 @@ class Contacts extends Component {
         }))
       }
 
-
     handleChange = e => {
     let currentList = [];
     let newList = [];
@@ -38,7 +37,7 @@ class Contacts extends Component {
         const phone_no = item.phone;
 
         const filter = e.target.value.toLowerCase();
-        
+
         return fName_lc.includes(filter) || 
                lName_lc.includes(filter) || 
                email_lc.includes(filter) || 
@@ -53,20 +52,18 @@ class Contacts extends Component {
     });
   }
 
-  onEdit = e => {
-    console.log(e);
-    let contacts = this.state.contactList.slice();
+  onEdit = passContact => {
+    console.log(passContact);
+    let contacts = this.state.contactList;
     contacts = contacts.map(value => {
-       console.log(e.id)
-      if(value.id === e.id){
-        value = {...e};
+       console.log(passContact.id)
+      if(value.id === passContact.id){
+        value = {...passContact};
       }
       return value;
       
     });
-    
     this.setState({  contactList : contacts })
-    
   }
 
     render() { 

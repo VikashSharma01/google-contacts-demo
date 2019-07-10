@@ -4,15 +4,21 @@ import './contacts.css'
 class DisplayContactList extends Component{
 
     state = {
-
-        isEditing : false,
-        first_name : this.props.value.first_name,
-        last_name : this.props.value.last_name,
-        email : this.props.value.email,
-        phone : this.props.value.phone
+        isEditing : false
       };
 
+      constructor(props) {
+        super(props);
+        this.state = { 
+            first_name : this.props.value.first_name,
+            last_name : this.props.value.last_name,
+            email : this.props.value.email,
+            phone : this.props.value.phone
+         }
+      }
+      
       onUpdate = (e) => {
+          console.log(e.target.value);
           this.setState({
             isEditing : true,
             [e.target.name] : e.target.value
@@ -20,6 +26,7 @@ class DisplayContactList extends Component{
       }
 
       onUpdateSubmit = (e) => {
+          console.log(e);
           e.preventDefault();
           const contact = {
               id: this.props.value.id,
@@ -29,7 +36,7 @@ class DisplayContactList extends Component{
               avatar_url: this.props.value.avatar_url,
               phone: this.state.phone
           }
-          console.log('v')
+          console.log('saved')
           this.props.onEdit(contact);
 
           this.setState({
@@ -55,15 +62,15 @@ class DisplayContactList extends Component{
       renderAllList = () => {
           return (
             <div className = "contact-list-class">
-                        <span className = "id-sec">{this.props.value.id}</span>
-                        <img className = "avatar-image" src = {this.props.value.avatar_url} alt = "Contact_image"/>
-                        <span>{this.props.value.first_name}</span>
-                        <span>{this.props.value.last_name}</span>
-                        <span>{this.props.value.email}</span>
-                        <span>{this.props.value.phone}</span>
-                        <button onClick = {(event) => {this.onUpdate(event)}} uniquekey={this.props.value.id} className = "edit-list-item">&#9998;</button>
-                        <button onClick={() => this.props.onDelete(this.props.value.id)} key={this.props.value.id} className = "delete-list-item" >&#x2421;</button>
-                    </div>
+                <span className = "id-sec">{this.props.value.id}</span>
+                <img className = "avatar-image" src = {this.props.value.avatar_url} alt = "Contact_image"/>
+                <span>{this.props.value.first_name}</span>
+                <span>{this.props.value.last_name}</span>
+                <span>{this.props.value.email}</span>
+                <span>{this.props.value.phone}</span>
+                <button onClick = {(event) => {this.onUpdate(event)}} uniquekey={this.props.value.id} className = "edit-list-item">&#9998;</button>
+                <button onClick={() => this.props.onDelete(this.props.value.id)} key={this.props.value.id} className = "delete-list-item" >&#x2421;</button>
+            </div>
           )
       };
 
@@ -79,5 +86,4 @@ class DisplayContactList extends Component{
     }
 }
 
- 
 export default DisplayContactList;
